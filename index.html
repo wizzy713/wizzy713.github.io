@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Branden Nkhahle | Electrical Engineering Portfolio</title>
+<meta name="description" content="Professional ePortfolio of Branden Nkhahle, Electrical Engineering student.">
+<style>
+:root{
+ --bg:#07111f;--panel:#0d1b2e;--panel2:#11243b;--text:#edf4ff;
+ --muted:#a9b8ca;--accent:#43d4ff;--accent2:#8d7dff;--line:#263d58;
+ --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+background:radial-gradient(circle at 15% 10%,#102d48 0,transparent 32%),linear-gradient(135deg,#07111f,#0b1728 55%,#12112b);
+color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:auto;padding:0 24px}
+
+/* Header / tabs */
+header{min-height:100vh;display:flex;align-items:center}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,17,31,.9);
+backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:900;letter-spacing:.08em;white-space:nowrap}.logo span{color:var(--accent)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:5px}
+.tab{border:1px solid transparent;background:transparent;color:var(--muted);padding:9px 12px;
+border-radius:9px;cursor:pointer;font:inherit;white-space:nowrap}
+.tab:hover,.tab.active{color:var(--text);background:var(--panel2);border-color:var(--line)}
+main{padding-top:72px}
+.page{display:none;min-height:calc(100vh - 72px);padding:70px 0 100px;animation:fade .25s ease}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.hero{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:70px;min-height:75vh}
+.kicker{color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.15em;font-size:.78rem}
+h1{font-size:clamp(3.3rem,8vw,7rem);line-height:.9;letter-spacing:-.065em;margin:18px 0 25px}
+h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;
+background-clip:text;color:transparent}
+.lead{font-size:1.2rem;color:var(--muted);max-width:720px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;padding:12px 18px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-weight:750}
+.btn.primary{border:0;background:linear-gradient(90deg,#1fbde8,#7b6cf4)}
+.btn:hover{transform:translateY(-1px)}
+.orbit{aspect-ratio:1;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;
+background:radial-gradient(circle,#183a59 0, #0d1b2e 40%,transparent 41%);
+box-shadow:0 0 90px rgba(67,212,255,.08);position:relative;max-width:480px;margin:auto;width:100%}
+.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #2b4664;border-radius:50%}
+.orbit:before{inset:12%}.orbit:after{inset:28%}
+.core{width:220px;height:220px;border-radius:50%;display:grid;place-items:center;text-align:center;
+background:linear-gradient(145deg,#1d5c7b,#2c275e);font-weight:950;font-size:1.15rem;overflow:hidden}
+.core img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.cv-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.avatar-sm{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
+
+.section-head{margin-bottom:38px}.section-head h2{font-size:2.8rem;line-height:1;margin:0 0 12px}
+.section-head p{color:var(--muted);max-width:720px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{background:linear-gradient(145deg,rgba(17,36,59,.94),rgba(13,27,46,.94));
+border:1px solid var(--line);border-radius:16px;padding:25px;box-shadow:0 14px 40px rgba(0,0,0,.12)}
+.card h3{margin:0 0 8px}.card p{color:var(--muted)}.card:after{content:"";display:table;clear:both}
+.span4{grid-column:span 4}.span6{grid-column:span 6}.span8{grid-column:span 8}.span12{grid-column:1/-1}
+.tag{display:inline-block;border:1px solid #2b4966;border-radius:999px;padding:5px 9px;margin:5px 5px 0 0;
+color:#c9d8ea;font-size:.78rem}
+.timeline{border-left:2px solid #28425e;padding-left:28px}
+.item{position:relative;margin-bottom:34px}.item:before{content:"";position:absolute;left:-36px;top:8px;
+width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px #0b1b2c}
+.year{color:var(--accent);font-size:.78rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+.metric{font-size:2.5rem;font-weight:900;color:var(--accent)}
+.small{font-size:.9rem;color:var(--muted)}
+.back{margin-top:36px;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);
+background:var(--panel);padding:10px 15px;border-radius:9px;cursor:pointer;color:var(--text);font-weight:750}
+.back:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:20px}
+.contact-item{padding:14px 0;border-bottom:1px solid var(--line)}
+.contact-item:last-child{border-bottom:0}
+.contact-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:800}
+.contact-value{font-size:1.05rem;margin-top:3px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:block;font-size:.88rem;color:#c9d7e8;margin:0 0 6px}
+input,textarea{width:100%;border:1px solid #2a425d;background:#091729;color:var(--text);
+border-radius:9px;padding:12px;font:inherit;outline:none}
+input:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:150px;resize:vertical}
+.form-group{margin-bottom:15px}
+.submit{border:0;background:linear-gradient(90deg,#1fbde8,#7b6cf4);color:white;padding:12px 18px;
+border-radius:9px;font-weight:800;cursor:pointer}
+.notice{font-size:.82rem;color:var(--muted);margin-top:12px}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.9rem}
+@media(max-width:850px){
+ .nav{height:auto;min-height:72px;align-items:flex-start;padding-top:12px;padding-bottom:12px;flex-direction:column}
+ .tabs{width:100%} main{padding-top:125px}.page{min-height:calc(100vh - 125px)}
+ .hero{grid-template-columns:1fr;gap:40px}.orbit{max-width:370px}
+ .span4,.span6,.span8{grid-column:1/-1}.contact-grid{grid-template-columns:1fr}
+ .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+ <div class="wrap nav">
+  <div class="logo">TLOTLISO BRANDEN<span>/</span>ENGINEERING</div>
+  <nav class="tabs" aria-label="Portfolio sections">
+   <button class="tab active" data-page="home">Home</button>
+   <button class="tab" data-page="about">About Me</button>
+   <button class="tab" data-page="experience">Experience</button>
+   <button class="tab" data-page="projects">Projects</button>
+   <button class="tab" data-page="skills">Skills</button>
+   <button class="tab" data-page="cv">CV</button>
+   <button class="tab" data-page="artefacts">Artefacts</button>
+   <button class="tab" data-page="contact">Contact Me</button>
+  </nav>
+ </div>
+</div>
+
+<main class="wrap">
+
+<section id="home" class="page active">
+ <div class="hero">
+  <div>
+   <div class="kicker">Electrical Engineering • University of Cape Town</div>
+   <h1>Powering ideas into <span>real systems.</span></h1>
+   <p class="lead">I am Branden Nkhahle, an Electrical Engineering student passionate about electronics, power systems, control, embedded systems, automation and practical engineering.</p>
+   <div class="buttons">
+    <button class="btn primary" onclick="showPage('projects')">Explore my projects →</button>
+    <button class="btn" onclick="showPage('contact')">Contact me</button>
+   </div>
+  </div>
+  <div class="orbit"><div class="core" id="heroCore">
+    <img src="assets/profile.jpg" alt="Branden Nkhahle" id="heroPhoto"
+     onerror="this.style.display='none'; document.getElementById('heroFallback').style.display='block';">
+    <span id="heroFallback" style="display:none">ELECTRICAL<br>ENGINEERING</span>
+   </div></div>
+ </div>
+</section>
+
+<section id="about" class="page">
+ <div class="section-head"><h2>About Me</h2><p>My engineering identity is built around curiosity, practical problem-solving and turning electrical engineering theory into working systems.</p></div>
+ <div class="grid">
+  <article class="card span8"><h3>Who I am</h3>
+   <img src="assets/profile.jpg" alt="Tlotliso Branden Nkhahle" class="avatar-sm" style="float:right;margin:0 0 12px 16px"
+    onerror="this.remove();">
+   <p>I am Tlotliso Branden Nkhahle, an Electrical Engineering student at the University of Cape Town. My interests include electrical machines, power electronics, control and instrumentation, embedded systems, electronics and automation.</p>
+   <p>I enjoy engineering projects where hardware, software and system-level thinking come together to solve a real problem. For me, engineering is a mindset of grit and perseverance — the discipline to keep working through a difficult simulation or a stubborn design problem until the solution comes into focus, and the humility to know I don't have to get there alone.</p>
+  </article>
+  <article class="card span4"><div class="metric">4IR</div><p><strong>My direction</strong></p>
+   <p>Developing the technical and practical skills needed to contribute to modern automation and the Fourth Industrial Revolution.</p>
+  </article>
+  <article class="card span6"><h3>Hobbies</h3>
+   <img src="assets/hiking.jpg" alt="Tlotliso Branden Nkhahle hiking" class="avatar-sm" style="float:left;margin:0 16px 12px 0">
+   <p><strong>Hiking</strong> is where I go to reset and think — there's a clarity that comes from a steep trail and a good summit view that I don't find anywhere else.</p>
+   <p><strong>Chess</strong> is my other outlet: I enjoy the discipline of thinking several moves ahead, which mirrors the way I like to approach engineering problems.</p>
+  </article>
+ </div>
+ <button class="back" onclick="goBack()">← Back</button>
+</section>
+
+<section id="experience" class="page">
+ <div class="section-head"><h2>Experience</h2><p>Academic, industrial and vacation-work experiences that have shaped my approach to engineering.</p></div>
+ <div class="timeline">
+  <div class="item">
+   <div class="year">Mar 2024 – Present</div><h3>Site Manager — Regenerative Neighbourhoods Development Agency</h3>
+   <p>Managing site operations through coordinated planning, ensuring smooth communication and efficient time management. Supporting an after-school mathematics and physics program, prioritising tutor well-being and learner productivity.</p>
+   <span class="tag">Operations</span><span class="tag">Leadership</span><span class="tag">Education</span>
+  </div>
+  <div class="item">
+   <div class="year">Dec 2025 – Jan 2026</div><h3>Vacation Student — Sasol Ltd. (Liquid Value Chain)</h3>
+   <p>Analysed and developed monitoring solutions for sequence control strategies on the KX-101 system, working under supervisors Fergie Maluleka and Friedrich Mulke.</p>
+   <p>Investigated 219 recorded valve trips between April 2014 and March 2015 that resulted in gas flaring on column 70VL-101, totalling over R9.4 million in losses. Traced these to hidden and poorly documented information in the existing start-up sequence, then redesigned the compressor start-up sequence using Honeywell Control Builder and produced a formal control narrative to close the documentation gap and minimise activation delays.</p>
+   <span class="tag">Honeywell Control Builder</span><span class="tag">Sequence control</span><span class="tag">Control narratives</span><span class="tag">Refrigeration systems</span>
+  </div>
+  <div class="item">
+   <div class="year">Dec 2024 – Jan 2025</div><h3>Vacation Student — Sasol Ltd. (Gas Circuit)</h3>
+   <p>Studied lube-oil systems for the Gas Circuit compressors under coaches Karabo and James: compressor PFDs, instrumentation loop diagrams, control and operating philosophy, and transfer systems under normal and abnormal conditions such as power outages.</p>
+   <p>Investigated the sequence of events behind a compressor trip that cost an estimated R5.83 million in lost production, and engineered protection schemes for the driving motors — analysing fuse let-through current, CT/VT and relay protection, and cable short-circuit ratings — to confirm the adequacy of existing protection. Recommended an alarm system to flag when the standby pump is left off auto for more than 10 minutes.</p>
+   <span class="tag">Motor protection</span><span class="tag">Fault analysis</span><span class="tag">Instrumentation</span><span class="tag">Industrial systems</span>
+  </div>
+  <div class="item">
+   <div class="year">Feb 2023 – Dec 2024</div><h3>Mathematics Tutor — Regenerative Neighbourhoods Development Agency</h3>
+   <p>Tutored high-school mathematics as part of an after-school academic support program.</p>
+   <span class="tag">Tutoring</span><span class="tag">Communication</span>
+  </div>
+ </div>
+ <button class="back" onclick="goBack()">← Back</button>
+</section>
+
+<section id="projects" class="page">
+ <div class="section-head"><h2>Projects</h2><p>A selection of engineering work demonstrating electronics, embedded systems, control, RF and software skills.</p></div>
+ <div class="grid">
+  <article class="card span6"><h3>Tracking Camera Tripod (CamX) <span style="font-size:.7rem;color:var(--accent);font-weight:700">— in progress</span></h3><p>An Android + ESP32 system that turns a tripod into a motorised camera operator. An Android app (CameraX, Kotlin) tracks a chosen subject in real time using Google ML Kit object detection, with a MediaPipe hand-landmarker gesture ("open palm") to lock onto them in a crowd.</p>
+   <p>A 1D Kalman filter smooths the detected coordinates and predicts the subject's position 100ms ahead to compensate for network latency. The predicted X/Y pixel coordinates are streamed over UDP (with mDNS auto-discovery on the local network) to an ESP32 microcontroller, which drives two servo motors for proportional pan/tilt control of the tripod head.</p>
+   <span class="tag">Android / Kotlin</span><span class="tag">CameraX</span><span class="tag">ML Kit</span><span class="tag">MediaPipe</span><span class="tag">Kalman filter</span><span class="tag">ESP32</span><span class="tag">UDP networking</span><span class="tag">Servo control</span>
+   <p class="small" style="margin-top:8px"><a href="https://github.com/wizzy713/tracking-camera-tripod" target="_blank" rel="noopener">View on GitHub ↗</a></p></article>
+  <article class="card span6"><h3>Micromouse Power & Control</h3><p>Power subsystem for a MicroMouse maze-solving robot (UCT EEE3088F Design Project): dual-input battery charging (USB-C and 9V DC), 3.3V/5V regulation, motor control for 4 DC motors, I²C battery monitoring and a compact custom PCB.</p>
+   <p>Also led a separate design study (EEE3097S) diagnosing why the robot's wheel-encoder signals dropped out after small impacts or low battery voltage, causing mapping and navigation errors. Designed a Stateflow-based control system in Simulink with three states — Normal, Signal Loss and Recovery — combining a low-pass filter and signal-quality check to detect bad encoder data and safely halt the motors within one control cycle, then resume motion within a second of signal recovery. Validated the approach across five deliberately-disrupted test runs.</p>
+   <span class="tag">STM32</span><span class="tag">I²C</span><span class="tag">PCB</span><span class="tag">Simulink</span><span class="tag">Stateflow</span><span class="tag">Signal filtering</span>
+   <p class="small" style="margin-top:8px"><a href="https://github.com/wizzy713/Design-Project" target="_blank" rel="noopener">View on GitHub ↗</a></p></article>
+  <article class="card span6"><h3>MEERKAT — Underwater Ice Detection & Avoidance</h3><p>Sensory Subsystem lead for MEERKAT, a semi-autonomous underwater AUV built to detect and avoid ice in Antarctic waters. I developed the STM32F411 firmware integrating a VL53L1X time-of-flight sensor for buoyancy-system limit sensing and a DYP-L08 ultrasonic sensor for long-range acoustic obstacle and ice detection, including signal filtering, calibration and UART frame parsing.</p><span class="tag">STM32F411</span><span class="tag">VL53L1X</span><span class="tag">Ultrasonic sensing</span><span class="tag">I²C</span><span class="tag">UART</span><span class="tag">Sensor fusion</span><p class="small" style="margin-top:8px"><a href="https://github.com/Athenkosi-Khonzani/MEERKAT_Underwater_Ice_Detection_And_Avoidance-System" target="_blank" rel="noopener">View on GitHub ↗</a></p></article>
+  <article class="card span4"><h3>Process Control & Instrumentation</h3><p>System identification using step-response and frequency-response data, transfer-function modelling and comparison of measured and modelled behaviour.</p><span class="tag">MATLAB</span><span class="tag">Control</span></article>
+  <article class="card span4"><h3>Transmission Line Calculator</h3><p>Python/Tkinter engineering calculator for transmission-line parameters, characteristic impedance, propagation and RF calculations.</p><span class="tag">Python</span><span class="tag">Tkinter</span><span class="tag">RF</span></article>
+ </div>
+ <button class="back" onclick="goBack()">← Back</button>
+</section>
+
+<section id="skills" class="page">
+ <div class="section-head"><h2>Engineering Skills</h2><p>Technical areas developed through coursework, projects and industrial exposure.</p></div>
+ <div class="grid">
+  <article class="card span4"><h3>Electrical & Electronics</h3><span class="tag">Electrical machines</span><span class="tag">Power electronics</span><span class="tag">Circuit analysis</span><span class="tag">PCB design</span><span class="tag">Sensors</span></article>
+  <article class="card span4"><h3>Control & Instrumentation</h3><span class="tag">MATLAB</span><span class="tag">Simulink</span><span class="tag">System identification</span><span class="tag">Transfer functions</span><span class="tag">Instrumentation</span></article>
+  <article class="card span4"><h3>Programming & Embedded</h3><span class="tag">C</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">STM32</span><span class="tag">I²C</span><span class="tag">Embedded Systems</span><span class="tag">OOP</span><span class="tag">PCB Design</span></article>
+  <article class="card span4"><h3>Leadership & Soft Skills</h3><span class="tag">Leadership</span><span class="tag">Communication</span><span class="tag">Site management</span><span class="tag">Tutoring & mentoring</span></article>
+ </div>
+ <button class="back" onclick="goBack()">← Back</button>
+</section>
+
+<section id="cv" class="page">
+ <div class="section-head"><h2>Curriculum Vitae</h2><p>A summary of my education, experience and skills. Download the full PDF for the complete version.</p></div>
+ <div class="cv-actions">
+  <a class="btn primary" href="assets/Branden_Nkhahle_CV.pdf" download>Download CV (PDF) ↓</a>
+  <a class="btn" href="assets/Branden_Nkhahle_CoverLetter.pdf" download>Download Cover Letter (PDF) ↓</a>
+  <a class="btn" href="https://www.linkedin.com/in/branden-nkhahle-28b627264/" target="_blank" rel="noopener">View LinkedIn ↗</a>
+ </div>
+ <div class="grid" style="margin-top:30px">
+  <article class="card span12">
+   <h3>Profile</h3>
+   <p>Detail-oriented Electrical and Control Engineer with a BSc Eng from the University of Cape Town. Experienced in managing site operations and enhancing educational outcomes through after-school programs, with a focus on developing protection schemes for industrial motors and optimising refrigeration systems.</p>
+  </article>
+  <article class="card span6">
+   <h3>Education</h3>
+   <p><strong>University of Cape Town</strong><br>BSc Eng Electrical Engineering<br>Jan 2023 – Jan 2027</p>
+  </article>
+  <article class="card span6">
+   <h3>Achievements</h3>
+   <p>Awarded a scholarship from the <strong>Dell Young Leaders</strong> program in recognition of ambition, resilience and leadership potential.</p>
+  </article>
+  <article class="card span12">
+   <h3>Experience</h3>
+   <p><strong>Site Manager</strong> — Regenerative Neighbourhoods Development Agency <span class="small">(Mar 2024 – Present)</span></p>
+   <p><strong>Vacation Student</strong> — Sasol Ltd. <span class="small">(Dec 2025 – Jan 2026)</span></p>
+   <p><strong>Vacation Student</strong> — Sasol Ltd. <span class="small">(Dec 2024 – Jan 2025)</span></p>
+   <p><strong>Mathematics Tutor</strong> — Regenerative Neighbourhoods Development Agency <span class="small">(Feb 2023 – Dec 2024)</span></p>
+  </article>
+  <article class="card span12">
+   <h3>Core Skills</h3>
+   <p class="small" style="margin-top:-4px;margin-bottom:6px">Technical</p>
+   <span class="tag">Embedded Systems</span><span class="tag">PCB Design</span><span class="tag">OOP</span>
+   <p class="small" style="margin-top:14px;margin-bottom:6px">Soft Skills</p>
+   <span class="tag">Leadership</span><span class="tag">Communication</span>
+  </article>
+  <article class="card span12">
+   <h3>Contact</h3>
+   <p>Email: brandonnkhahhle134@gmail.com &nbsp;|&nbsp; Phone: 068 051 9724 &nbsp;|&nbsp;
+   <a href="https://www.linkedin.com/in/branden-nkhahle-28b627264/" target="_blank" rel="noopener">LinkedIn</a></p>
+  </article>
+ </div>
+ <button class="back" onclick="goBack()">← Back</button>
+</section>
+
+<section id="artefacts" class="page">
+ <div class="section-head"><h2>Artefacts</h2><p>Evidence of my engineering ability through technical work and project outputs.</p></div>
+ <div class="grid">
+  <article class="card span6"><h3>Industrial Presentation — 2025</h3><p><strong>Lube Oil Systems — Gas Circuit (Sasol)</strong></p><p>Technical presentation covering compressor lube-oil systems, slow transfer, reacceleration schemes, motor protection calculations and the compressor-trip sequence of events.</p><p class="small" style="margin-top:8px"><a href="assets/Nkhahle_TB_Elect_Eng_2_2024.pptx" download>Download presentation (PPTX) ↓</a></p></article>
+  <article class="card span6"><h3>Industrial Presentation — 2026</h3><p><strong>Monitoring Solutions for Sequence Control Strategies (Sasol)</strong></p><p>Analysis of 219 valve trips on the KX-101 system and over R9.4 million in flaring losses, leading to a redesigned start-up sequence and a formal control narrative.</p><p class="small" style="margin-top:8px"><a href="assets/Nkhahle_TB_Elect_Eng_3_2025.pptx" download>Download presentation (PPTX) ↓</a></p></article>
+  <article class="card span6"><h3>Micromouse Design Report</h3><p><strong>EEE3097S — Encoder Signal Reliability</strong></p><p>Design report documenting the Stateflow/Simulink solution developed to detect and recover from wheel-encoder signal loss on the micromouse robot.</p><p class="small" style="margin-top:8px"><a href="assets/EE3097S_NKHTLO001_M2-BRANDEN-NKHAHLE.pdf" download>Download report (PDF) ↓</a></p></article>
+  <article class="card span6"><h3>Micromouse Power & Control</h3><p>KiCad PCB project, Gerber/manufacturing files and BOM for the micromouse power subsystem, plus the encoder signal-reliability design work.</p><p class="small" style="margin-top:8px"><a href="https://github.com/wizzy713/Design-Project" target="_blank" rel="noopener">View on GitHub ↗</a></p></article>
+  <article class="card span6"><h3>MEERKAT — Underwater Ice Detection & Avoidance</h3><p>Full AUV repository including the Sensory Subsystem firmware (STM32F411, VL53L1X, DYP-L08 ultrasonic sensor) I developed, alongside the housing, power and control subsystems.</p><p class="small" style="margin-top:8px"><a href="https://github.com/Athenkosi-Khonzani/MEERKAT_Underwater_Ice_Detection_And_Avoidance-System" target="_blank" rel="noopener">View on GitHub ↗</a></p></article>
+  <article class="card span6"><h3>Tracking Camera Tripod (CamX)</h3><p>Android app and ESP32 firmware source for the vision-based tracking tripod, including the Kalman filter, UDP protocol and servo control code.</p><p class="small" style="margin-top:8px"><a href="https://github.com/wizzy713/tracking-camera-tripod" target="_blank" rel="noopener">View on GitHub ↗</a></p></article>
+ </div>
+ <button class="back" onclick="goBack()">← Back</button>
+</section>
+
+<section id="contact" class="page">
+ <div class="section-head"><h2>Contact Me</h2><p>I'd be happy to connect about engineering opportunities, projects, collaboration or professional networking.</p></div>
+ <div class="contact-grid">
+  <div class="card">
+   <h3>Let's connect</h3>
+   <div class="contact-item"><div class="contact-label">Email</div><div class="contact-value"><a id="emailLink" href="mailto:brandonnkhahhle134@gmail.com">brandonnkhahhle134@gmail.com</a></div></div>
+   <div class="contact-item"><div class="contact-label">Cellphone</div><div class="contact-value"><a id="phoneLink" href="tel:+27680519724">068 051 9724</a></div></div>
+   <div class="contact-item"><div class="contact-label">LinkedIn</div><div class="contact-value"><a id="linkedinLink" href="https://www.linkedin.com/in/branden-nkhahle-28b627264/" target="_blank" rel="noopener">LinkedIn Profile ↗</a></div></div>
+  </div>
+  <div class="card">
+   <h3>Send me a message</h3>
+   <form action="https://formsubmit.co/brandonnkhahhle134@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="New message from Branden's Engineering Portfolio">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <div class="form-row">
+     <div class="form-group"><label for="name">Your name</label><input id="name" name="name" required></div>
+     <div class="form-group"><label for="email">Your email</label><input id="email" name="email" type="email" required></div>
+    </div>
+    <div class="form-group"><label for="phone">Your cellphone (optional)</label><input id="phone" name="phone"></div>
+    <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" required placeholder="Tell me how I can help..."></textarea></div>
+    <button class="submit" type="submit">Send Message →</button>
+    <p class="notice">First submission: FormSubmit will email you a confirmation link — click it once to activate the form.</p>
+   </form>
+  </div>
+ </div>
+ <button class="back" onclick="goBack()">← Back</button>
+</section>
+
+</main>
+
+<footer><div class="wrap">© 2026 Branden Nkhahle • Electrical Engineering ePortfolio</div></footer>
+
+<script>
+const pages=[...document.querySelectorAll('.page')];
+const tabs=[...document.querySelectorAll('.tab')];
+const historyStack=['home'];
+
+function showPage(id, addHistory=true){
+ pages.forEach(p=>p.classList.toggle('active',p.id===id));
+ tabs.forEach(t=>t.classList.toggle('active',t.dataset.page===id));
+ if(addHistory && historyStack[historyStack.length-1]!==id) historyStack.push(id);
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+tabs.forEach(tab=>tab.addEventListener('click',()=>showPage(tab.dataset.page)));
+
+function goBack(){
+ if(historyStack.length>1){
+  historyStack.pop();
+  showPage(historyStack[historyStack.length-1],false);
+ }else{
+  showPage('home',false);
+ }
+}
+</script>
+</body>
+</html>
